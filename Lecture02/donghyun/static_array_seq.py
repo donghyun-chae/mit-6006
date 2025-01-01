@@ -44,6 +44,21 @@ class Array_Seq:
     def delete_last(self): return self.delete_at(len(self) - 1)
 
 seq = Array_Seq()   
-seq.insert_first("5")
-seq.insert_last("2")
-print(seq.get_at(1))
+
+import time
+
+# 많은 데이터를 삽입해보자
+start_time = time.time()
+for i in range(10000):
+    seq.insert_last(i)
+end_time = time.time()
+
+print("Time taken for 10000 inserts:", end_time - start_time)
+
+# 많은 데이터를 삭제해보자
+start_time = time.time()
+for _ in range(10000):
+    seq.delete_last()
+end_time = time.time()
+
+print("Time taken for 10000 deletes:", end_time - start_time)
