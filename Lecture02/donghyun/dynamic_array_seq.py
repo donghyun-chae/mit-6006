@@ -1,7 +1,5 @@
 from static_array_seq import Array_Seq
 
-    
-
 class Dynamic_Array_Seq(Array_Seq):
     def __init__(self, r = 2): # O(1)
         super().__init__()
