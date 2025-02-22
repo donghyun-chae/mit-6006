@@ -1,29 +1,35 @@
-def bfs(Adj, s):
-  parent = [None for v in Adj]
-  parent[s] = s
-  level = [[s]]
+graph = [[],[2],[3],[4,5,6],[7],[7],[8],[8],[1],[10],[],[12],[13],[14,15],[16],[16],[]]
 
-  while 0 < len(level[-1]):
+def bfs(s, parent, Adj):
+  level = [[s]]
+  parent[s] = s
+  while len(level[-1]) > 0:
     level.append([])
-    for u in level[-2]:
-      for v in Adj[u]:
-        if parent[v] is None:
+    for u in level[-2] :
+      for v in Adj[u] :
+        if parent[v] == None :
           parent[v] = u
           level[-1].append(v)
-  print("level: ", level)
-  print("parent: ", parent)
   return parent
 
-def unweighted_shortest_path(Adj, s, t):
-  parent = bfs(Adj, s)
-  if parent[t] is None:
-    return None
-  i = t
-  path = [t]
-  while i != s:
-    i = parent[i]
-    path.append(i)
-  return path[::-1]
+def full_bfs(Adj):
+  parent = [None for _ in graph]
+  for v in range(len(graph)):
+    if parent[v] is None:
+      bfs(v, parent, Adj)
+  return parent
 
-A1 = [[1,4,3], [0], [3], [0,2], [0]]
-print(unweighted_shortest_path(A1, 0, 4))
+print(full_bfs(graph))
+
+
+# t = int(input())
+# path = [t]
+
+# while parent[t] != None and t != s:
+#   path.append(parent[t])
+#   t = parent[t]
+
+# if t == s:
+#   print(path[::-1])
+# else:
+#   print("fail")
