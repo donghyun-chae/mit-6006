@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 def dfs(s, Adj, parent=None, order=None):
-    if parent is None:
+    if parent is Noneb:
         parent = [None for _ in Adj]
         parent[s] = s
         order = []
 
     for v in Adj[s]:
-        if parent[v] is None:
+        if parent[v] is None:2
             parent[v] = s
             dfs(v, Adj, parent, order)
     order.append(s)
